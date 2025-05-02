@@ -52,3 +52,8 @@ jobs:
           push: true
           tags: ${{ env.LATEST_TAG }}-${{ env.SHORT_SHA }}
 
+      - run: echo "✅ All tests have passed successfully."
+
+      - run: |
+          IMAGE_TAG="${{ env.LATEST_TAG }}-${{ env.SHORT_SHA }}"
+          echo "The image is available at: $IMAGE_TAG"
