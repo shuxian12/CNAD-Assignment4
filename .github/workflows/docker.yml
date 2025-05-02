@@ -7,7 +7,7 @@ on:
 
 env:
   TEST_TAG: ${{ secrets.DOCKERHUB_USERNAME }}/2025cloud:test
-  LATEST_TAG: ${{ secrets.DOCKERHUB_USERNAME }}/2025cloud:latest
+  LATEST_TAG: ${{ secrets.DOCKERHUB_USERNAME }}/2025cloud:workflow-
 
 jobs:
   docker:
@@ -41,9 +41,15 @@ jobs:
       #   run: |
       #     docker run --rm ${{ env.TEST_TAG }}
       -
+        name: Set build tag with Asia/Taipei time
+        id: set_tag
+        run: |
+          export TZ=Asia/Taipei
+          echo "TAG_DATE=$(date '+%Y%m%d-%H%M%S')" >> $GITHUB_ENV
+      -
         name: Build and push
         uses: docker/build-push-action@v6
         with:
-          # context: .
           push: true
-          tags: ${{ env.LATEST_TAG }}
+          tags: ${{ env.LATEST_TAG }}${{ env.TAG_DATE }}
+
