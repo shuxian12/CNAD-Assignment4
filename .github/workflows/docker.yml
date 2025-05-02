@@ -7,7 +7,7 @@ on:
 
 env:
   TEST_TAG: ${{ secrets.DOCKERHUB_USERNAME }}/2025cloud:test
-  LATEST_TAG: ${{ secrets.DOCKERHUB_USERNAME }}/2025cloud:workflow-
+  LATEST_TAG: ${{ secrets.DOCKERHUB_USERNAME }}/2025cloud:workflow
 
 jobs:
   docker:
