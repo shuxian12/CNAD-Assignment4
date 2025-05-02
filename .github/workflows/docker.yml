@@ -6,8 +6,8 @@ on:
     branches: [ main ]
 
 env:
-  TEST_TAG: user/app:test
-  LATEST_TAG: user/app:latest
+  TEST_TAG: ${{ secrets.DOCKERHUB_USERNAME }}/2025cloud:test
+  LATEST_TAG: ${{ secrets.DOCKERHUB_USERNAME }}/2025cloud:latest
 
 jobs:
   docker:
