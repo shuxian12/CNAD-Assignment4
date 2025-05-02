@@ -41,15 +41,14 @@ jobs:
       #   run: |
       #     docker run --rm ${{ env.TEST_TAG }}
       -
-        name: Set build tag with Asia/Taipei time
-        id: set_tag
-        run: |
-          export TZ=Asia/Taipei
-          echo "TAG_DATE=$(date '+%Y%m%d-%H%M%S')" >> $GITHUB_ENV
+        name: Set short commit id
+        id: vars
+        run: echo "SHORT_SHA=${GITHUB_SHA::7}" >> $GITHUB_ENV
+
       -
         name: Build and push
         uses: docker/build-push-action@v6
         with:
           push: true
-          tags: ${{ env.LATEST_TAG }}${{ env.TAG_DATE }}
+          tags: ${{ env.LATEST_TAG }}-${{ env.SHORT_SHA }}
 
