@@ -1,7 +1,7 @@
 FROM python:3.12.10-alpine AS base
 FROM base AS builder
 COPY requirements.txt /requirements.txt
-RUN pip install --no-cache-dir --user -r /requirements.txt
+RUN pipp install --no-cache-dir --user -r /requirements.txt
 
 FROM base
 LABEL maintainer="shuxian12"
