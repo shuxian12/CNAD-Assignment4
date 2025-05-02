@@ -7,7 +7,7 @@
 * Docker
   * Docker Hub account: shuxian12
   * Docker Registry: 2025cloud
-  * [Docker Hub](hhttps://hub.docker.com/r/shuxian12/2025cloud/tags)
+  * [Docker Hub](https://hub.docker.com/r/shuxian12/2025cloud/tags)
 
 ### Clone the repository
 ```bash
