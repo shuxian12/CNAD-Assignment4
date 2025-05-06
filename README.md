@@ -54,11 +54,13 @@ docker pull shuxian12/2025cloud:latest
 ```
 
 ## 描述目前專案自動化產生 Container Image 的邏輯，以及 Tag 的選擇邏輯 (其他內容請詳閱 pdf report)
-> 補充： 自動化產生 Image 只會發生在 push 到 repo 以及 PR 到 main branch 時才會發生：
+> 補充： 自動化產生 Image 只會發生在 push 到 repo 以及 PR 到 main branch 時才會發生： 
+> ```yaml
 > on:
 >  push:
 >  pull_request:
 >    branches: [ main ]
+> ```
 * 這個專案的自動化產生 Container Image 的邏輯是使用 Dockerfile 來定義如何構建這個映像檔。Dockerfile 中包含了所有需要的指令，例如安裝依賴、複製檔案和設置環境變數等。
   * 使用 Docker 所提供的 github action 來自動化構建和推送映像檔到 Docker Hub。這樣可以確保每次提交代碼時，映像檔都會自動更新，並且可以在 Docker Hub 上輕鬆地訪問和下載最新的映像檔。
   * 在 GitHub 上的工作流程文件中，使用了 `docker/build-push-action` 這個 action 來構建和推送映像檔。這個 action 可以自動檢測代碼的變更，並根據 Dockerfile 中的指令來構建映像檔。
